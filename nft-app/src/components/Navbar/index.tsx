@@ -1,8 +1,24 @@
 import React from 'react';
+import NavLogoImg from '../../images/NFT_Icon.png';
+import {
+  Nav,
+  NavbarContainer, 
+  NavLogo
+} from './NavbarElements';
 
 const Navbar = () => {
+
   return (
-    <div>Navbar here</div>
+    <>
+      <Nav>
+        <NavbarContainer>
+          <NavLogo>
+            <img height='40px' src={NavLogoImg} alt="NFT Logo" />
+            NFT Marketplace
+          </NavLogo>
+        </NavbarContainer>
+      </Nav>
+    </>
   )
 }
 
