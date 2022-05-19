@@ -1,7 +1,8 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Nav = styled.nav`
-  background: linear-gradient(rgba(19, 32, 46, 0.9), rgba(163, 196, 236, 0.55));
+  background-color: #DDE4E6;
   height: 80px;
   margin-top: -80px;
   display: flex;
@@ -26,7 +27,7 @@ export const NavbarContainer = styled.div`
   max-width: 1100px;
 `;
 
-export const NavLogo = styled.div`
+export const NavLogo = styled(Link)`
   color: rgb(24, 188, 206);
   justify-self: flex-start;
   cursor: pointer;
@@ -45,5 +46,59 @@ export const NavLogo = styled.div`
 
   @media screen and (max-width: 480px) {
     font-size: 1.1rem;
+  }
+`;
+
+export const MobileIcon = styled.div`
+  display: none;
+
+  @media screen and (max-width: 768px) {
+      color: rgb(24, 188, 206);
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      transform: translate(-100%, 70%);
+      font-size: 1.8rem;
+      cursor: pointer;
+  }
+`;
+
+export const BtnMenu = styled.div`
+  display: flex;
+
+  @media screen and (max-width: 768px) {
+      display: none;
+  }
+`;
+
+export const NavBtn = styled.nav`
+  display: flex;
+  align-items: center;
+  padding: 10px;
+
+  @media screen and (max-width: 768px) {
+      display: none;
+  }
+`;
+
+export const NavBtnLink = styled(Link)`
+  border-radius: 50px;
+  background: rgb(24, 188, 206);
+  white-space: nowrap;
+  padding: 10px 22px;
+  color: #010606;
+  font-size: 16px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+
+  &:hover {
+    transition: all 0.2s ease-in-out;
+    background: #fff;
+    outline: 3px solid rgb(24, 188, 206);
+    color: #010606;
   }
 `;
