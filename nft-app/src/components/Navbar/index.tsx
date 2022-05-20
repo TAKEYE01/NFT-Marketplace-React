@@ -18,7 +18,7 @@ const Navbar = () => {
       <Nav>
         <NavbarContainer>
           <NavLogo to='/'>
-            <img height='40px' src={NavLogoImg} alt="NFT Logo" />
+            <img style={{ paddingRight: '5px'}} height='40px' src={NavLogoImg} alt="NFT Logo" />
             NFT Marketplace
           </NavLogo>
           <MobileIcon>
