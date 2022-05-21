@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const HeroContainer = styled.div`
+export const SignupContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,7 +22,7 @@ export const HeroContainer = styled.div`
     }
 `;
 
-export const HeroBg = styled.div`
+export const SignupBg = styled.div`
     position: absolute;
     top: 0;
     right: 0;
@@ -33,51 +33,21 @@ export const HeroBg = styled.div`
     overflow: hidden;
 `;
 
-export const HeroContent = styled.div`
-    background: rgba(0,0,0, 0.80);
+export const SignupContent = styled.div`
+    background: #DDE4E6;
     z-index: 3;
     max-width: 1200px;
     position: absolute;
-    padding: 8px 24px;
+    padding: 24px;
     display: flex;
     flex-direction: column;
     align-items: center;
 
     @media screen and (max-width: 768px) {
-        width: 100%;
+        width: 60%;
     }
 
     @media screen and (max-width: 480px) {
-        width: 100%;
-    }
-`;
-
-export const HeroH1 = styled.h1`
-    color: #fff;
-    font-size: 48px;
-    text-align: center;
-
-    @media screen and (max-width: 768px) {
-        font-size: 38px;
-    }
-
-    @media screen and (max-width: 480px) {
-        font-size: 28px;
-    }
-`;
-
-export const HeroP = styled.p`
-    margin-top: 24px;
-    color: #fff;
-    font-size: 24px;
-    text-align: center;
-    max-width: 600px;
-
-    @media screen and (max-width: 768px) {
-        font-size: 24px;
-    }
-
-    @media screen and (max-width: 480px) {
-        font-size: 16px;
+        width: 60%;
     }
 `;
