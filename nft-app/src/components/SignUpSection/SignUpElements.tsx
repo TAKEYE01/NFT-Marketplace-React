@@ -36,18 +36,9 @@ export const SignupBg = styled.div`
 export const SignupContent = styled.div`
     background: #DDE4E6;
     z-index: 3;
-    max-width: 1200px;
     position: absolute;
     padding: 24px;
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    @media screen and (max-width: 768px) {
-        width: 60%;
-    }
-
-    @media screen and (max-width: 480px) {
-        width: 60%;
-    }
 `;

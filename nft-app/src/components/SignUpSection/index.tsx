@@ -53,9 +53,15 @@ const Signup = () => {
     const {
         register,
         handleSubmit,
+        reset,
         formState: { errors },
     } = useForm<IFormInput>({
         resolver: yupResolver(schema),
+        defaultValues: {
+            Email: "",
+            Username: "",
+            Password: "",
+        }
     });
 
     const { heading, submitButton } = useStyles();
@@ -64,6 +70,7 @@ const Signup = () => {
 
     const onSubmit = (data: IFormInput) => {
         setJson(JSON.stringify(data));
+        reset();
     };
 
     return (
