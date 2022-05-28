@@ -17,15 +17,15 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 interface IFormInput {
-    Email: string;
-    Username: string;
-    Password: string;
+    email: string;
+    username: string;
+    password: string;
 }
 
 const schema = yup.object().shape({
-    Email: yup.string().required().email(),
-    Username: yup.string().required().min(2).max(25),
-    Password: yup.string().required().min(8).max(120),
+    email: yup.string().required().email(),
+    username: yup.string().required().min(4).max(25),
+    password: yup.string().required().min(8).max(120),
 });
 
 const useStyles = makeStyles((theme) => ({
@@ -58,9 +58,9 @@ const Signup = () => {
     } = useForm<IFormInput>({
         resolver: yupResolver(schema),
         defaultValues: {
-            Email: "",
-            Username: "",
-            Password: "",
+            email: "",
+            username: "",
+            password: "",
         }
     });
 
@@ -68,8 +68,15 @@ const Signup = () => {
 
     const [json, setJson] = useState<string>();
 
-    const onSubmit = (data: IFormInput) => {
+    const onSubmit = async (data: IFormInput) => {
         setJson(JSON.stringify(data));
+
+        const res = await fetch("http://localhost:5000/user", {
+            method: "POST",
+            headers: { 'Content-Type': 'application/json' },
+            body: json,
+        }).then((res) => res.json());
+        alert(JSON.stringify(`${res.message}, status: ${res.status}`));
         reset();
     };
 
@@ -84,33 +91,33 @@ const Signup = () => {
             </Typography>
             <form onSubmit={handleSubmit(onSubmit)} noValidate>
                 <TextField
-                    {...register("Email")}
+                    {...register("email")}
                     variant="outlined"
                     margin="normal"
                     label="Email"
-                    helperText={errors.Email?.message}
-                    error={!!errors.Email?.message}
+                    helperText={errors.email?.message}
+                    error={!!errors.email?.message}
                     fullWidth
                     required
                 />
                 <TextField
-                    {...register("Username")}
+                    {...register("username")}
                     variant="outlined"
                     margin="normal"
                     label="Username"
-                    helperText={errors.Username?.message}
-                    error={!!errors.Username?.message}
+                    helperText={errors.username?.message}
+                    error={!!errors.username?.message}
                     fullWidth
                     required
                 />
                 <TextField
-                    {...register("Password")}
+                    {...register("password")}
                     variant="outlined"
                     margin="normal"
                     label="Password"
-                    helperText={errors.Password?.message}
-                    error={!!errors.Password?.message}
-                    type="Password"
+                    helperText={errors.password?.message}
+                    error={!!errors.password?.message}
+                    type="password"
                     fullWidth
                     required
                 />
@@ -123,14 +130,6 @@ const Signup = () => {
                 >
                     Sign Up
                 </Button>
-                {json && (
-                    <>
-                        <Typography variant="body1">
-                            Below is the JSON that would pass to backend server.
-                        </Typography>
-                        <Typography variant="body2">{json}</Typography>
-                    </>
-                )}
             </form>
         </SignupContent>
         </SignupContainer>
