@@ -1,27 +1,25 @@
 import React from 'react';
-import { useForm } from "react-hook-form";
+import { useForm } from 'react-hook-form';
 import {
-    SignupContainer,
-    SignupBg,
-    SignupContent
-} from './SignUpElements';
+    LoginContainer,
+    LoginBg,
+    LoginContent
+} from './LoginElements';
 import {
-  makeStyles,
-  Typography,
-  TextField,
-  Button,
+    makeStyles,
+    Typography,
+    TextField,
+    Button,
 } from "@material-ui/core";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 interface IFormInput {
-    email: string;
     username: string;
     password: string;
 }
 
 const schema = yup.object().shape({
-    email: yup.string().required().email(),
     username: yup.string().required().min(4).max(25),
     password: yup.string().required().min(8).max(120),
 });
@@ -46,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const Signup = () => {
+const Login = () => {
 
     const {
         register,
@@ -56,7 +54,6 @@ const Signup = () => {
     } = useForm<IFormInput>({
         resolver: yupResolver(schema),
         defaultValues: {
-            email: "",
             username: "",
             password: "",
         }
@@ -66,7 +63,7 @@ const Signup = () => {
 
     const onSubmit = async (data: IFormInput) => {
 
-        const res = await fetch("http://localhost:5000/user", {
+        const res = await fetch("http://localhost:5000/login", {
             method: "POST",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data),
@@ -75,26 +72,16 @@ const Signup = () => {
         reset();
     };
 
-    return (
-        <SignupContainer>
-            <SignupBg>
+    return(
+        <LoginContainer>
+            <LoginBg>
                 <img style={{ objectFit: 'contain', maxHeight: '100%' }} src={require("../../images/nftmarket.png")} alt="Hero Background" />
-            </SignupBg>
-            <SignupContent>
-                <Typography className={heading} variant="h3">
-                    Sign Up Form
+            </LoginBg>
+            <LoginContent>
+                <Typography className={heading} variant='h3'>
+                    Login Form 
                 </Typography>
                 <form onSubmit={handleSubmit(onSubmit)} noValidate>
-                    <TextField
-                        {...register("email")}
-                        variant="outlined"
-                        margin="normal"
-                        label="Email"
-                        helperText={errors.email?.message}
-                        error={!!errors.email?.message}
-                        fullWidth
-                        required
-                    />
                     <TextField
                         {...register("username")}
                         variant="outlined"
@@ -123,12 +110,12 @@ const Signup = () => {
                         color="primary"
                         className={submitButton}
                     >
-                        Sign Up
+                        Login
                     </Button>
                 </form>
-            </SignupContent>
-        </SignupContainer>
+            </LoginContent>
+        </LoginContainer>
     )
 }
 
-export default Signup;
+export default Login;

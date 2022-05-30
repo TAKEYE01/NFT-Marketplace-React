@@ -1,15 +1,16 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import Login from '../components/LoginSection';
 
-const Login = () => {
+const LoginPage = () => {
   return (
     <>
         <Navbar />
-        <div>Login Component</div>
+        <Login />
         <Footer />
     </>
   )
 }
 
-export default Login;
+export default LoginPage;
