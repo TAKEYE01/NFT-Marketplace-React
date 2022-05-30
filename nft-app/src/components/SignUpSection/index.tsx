@@ -71,7 +71,7 @@ const Signup = () => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data),
         }).then((res) => res.json());
-        alert(JSON.stringify(`${res.message}, status: ${res.status}`));
+        alert(JSON.stringify(`${res.message}`));
         reset();
     };
 

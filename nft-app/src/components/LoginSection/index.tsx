@@ -20,8 +20,8 @@ interface IFormInput {
 }
 
 const schema = yup.object().shape({
-    username: yup.string().required().min(4).max(25),
-    password: yup.string().required().min(8).max(120),
+    username: yup.string().required().max(25),
+    password: yup.string().required().max(120),
 });
 
 const useStyles = makeStyles((theme) => ({
@@ -68,7 +68,7 @@ const Login = () => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data),
         }).then((res) => res.json());
-        alert(JSON.stringify(`${res.message}, status: ${res.status}`));
+        alert(JSON.stringify(`${res.message}`));
         reset();
     };
 
