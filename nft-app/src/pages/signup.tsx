@@ -1,12 +1,12 @@
-import React from 'react';
 import Navbar from '../components/Navbar';
 import SignUpSection from '../components/SignUpSection';
 import Footer from '../components/Footer';
 
-const SignupPage = () => {
+const SignupPage = ({profile} : {profile: string}) => {
+  
   return (
     <>
-        <Navbar />
+        <Navbar profile={profile}/>
         <SignUpSection />
         <Footer />
     </>

@@ -1,4 +1,3 @@
-import React from 'react';
 import Landing from './pages/index';
 import Signup from './pages/signup';
 import Login from './pages/login';
@@ -8,14 +7,19 @@ import {
   Route
 } from "react-router-dom";
 import './App.css';
+import { useState } from 'react';
 
 function App() {
+
+  const [profile, setProfile] = useState("");
+
+  
   return (
     <Router>
         <Routes>
-          <Route path="/" element={<Landing />}/>
-          <Route path="/signup" element={<Signup />}/>
-          <Route path="/login" element={<Login />}/>
+          <Route path="/" element={<Landing profile={profile}/>}/>
+          <Route path="/signup" element={<Signup profile={profile}/>}/>
+          <Route path="/login" element={<Login setProfile={setProfile} profile={profile}/>}/>
         </Routes>
     </Router>
   );

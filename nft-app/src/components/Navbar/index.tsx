@@ -11,8 +11,8 @@ import {
   NavBtnLink
 } from './NavbarElements';
 
-const Navbar = () => {
-
+const Navbar = ({profile} : {profile: string}) => {
+  
   return (
     <>
       <Nav>
@@ -25,12 +25,25 @@ const Navbar = () => {
             <FaBars />
           </MobileIcon>
           <BtnMenu>
-            <NavBtn>
-                <NavBtnLink to="/login">Login</NavBtnLink>
-            </NavBtn>
-            <NavBtn>
-                <NavBtnLink to="/signup">Sign Up</NavBtnLink>
-            </NavBtn>
+            {profile ?
+              <>
+                <NavBtn>
+                    <NavBtnLink to="/profile">{profile}</NavBtnLink>
+                </NavBtn>
+                <NavBtn>
+                    <NavBtnLink to="/login">Logout</NavBtnLink>
+                </NavBtn>
+              </>
+            :
+              <>
+                <NavBtn>
+                  <NavBtnLink to="/login">Login</NavBtnLink>
+                </NavBtn>
+                <NavBtn>
+                    <NavBtnLink to="/signup">Sign Up</NavBtnLink>
+                </NavBtn>
+              </>
+            }
           </BtnMenu>
         </NavbarContainer>
       </Nav>

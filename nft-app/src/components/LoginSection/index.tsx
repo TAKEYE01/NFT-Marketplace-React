@@ -1,4 +1,3 @@
-import React from 'react';
 import { useForm } from 'react-hook-form';
 import {
     LoginContainer,
@@ -44,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const Login = () => {
+const Login = ({setProfile} : {setProfile: React.Dispatch<React.SetStateAction<string>>}) => {
 
     const {
         register,
@@ -61,6 +60,7 @@ const Login = () => {
 
     const { heading, submitButton } = useStyles();
 
+
     const onSubmit = async (data: IFormInput) => {
 
         const res = await fetch("http://localhost:5000/auth/login", {
@@ -69,6 +69,7 @@ const Login = () => {
             body: JSON.stringify(data),
         }).then((res) => res.json());
         alert(JSON.stringify(`${res.message}`));
+        {(`${res.message}` === 'User Logged in.' ? setProfile(JSON.stringify(data.username).replace(/\"/g, "")) : setProfile(""));} //setProfile to set profile name
         reset();
     };
 
