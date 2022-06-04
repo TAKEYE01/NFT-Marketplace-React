@@ -6,7 +6,7 @@ const LoginPage = ({setProfile, profile} : {setProfile: React.Dispatch<React.Set
   
   return (
     <>
-        <Navbar profile={profile}/>
+        <Navbar profile={profile} setProfile={setProfile}/>
         <Login setProfile={setProfile}/>
         <Footer />
     </>

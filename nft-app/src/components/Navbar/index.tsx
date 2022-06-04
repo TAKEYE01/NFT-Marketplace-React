@@ -8,10 +8,16 @@ import {
   MobileIcon,
   BtnMenu,
   NavBtn,
-  NavBtnLink
+  NavBtnLink,
+  NavBtnSub
 } from './NavbarElements';
 
-const Navbar = ({profile} : {profile: string}) => {
+const Navbar = ({profile, setProfile} : {profile: string, setProfile: React.Dispatch<React.SetStateAction<string>>}) => {
+
+  const onSubmit = () => {
+    localStorage.removeItem("user");
+    setProfile('');
+  }
   
   return (
     <>
@@ -31,7 +37,7 @@ const Navbar = ({profile} : {profile: string}) => {
                     <NavBtnLink to="/profile">{profile}</NavBtnLink>
                 </NavBtn>
                 <NavBtn>
-                    <NavBtnLink to="/login">Logout</NavBtnLink>
+                    <NavBtnSub onClick={onSubmit}>Logout</NavBtnSub>
                 </NavBtn>
               </>
             :

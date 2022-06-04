@@ -17,8 +17,8 @@ function App() {
   return (
     <Router>
         <Routes>
-          <Route path="/" element={<Landing profile={profile}/>}/>
-          <Route path="/signup" element={<Signup profile={profile}/>}/>
+          <Route path="/" element={<Landing profile={profile} setProfile={setProfile}/>}/>
+          <Route path="/signup" element={<Signup profile={profile} setProfile={setProfile}/>}/>
           <Route path="/login" element={<Login setProfile={setProfile} profile={profile}/>}/>
         </Routes>
     </Router>

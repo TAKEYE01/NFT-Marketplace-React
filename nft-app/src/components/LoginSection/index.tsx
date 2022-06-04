@@ -12,6 +12,7 @@ import {
 } from "@material-ui/core";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useNavigate } from 'react-router-dom';
 
 interface IFormInput {
     username: string;
@@ -60,6 +61,8 @@ const Login = ({setProfile} : {setProfile: React.Dispatch<React.SetStateAction<s
 
     const { heading, submitButton } = useStyles();
 
+    const nav = useNavigate();
+
 
     const onSubmit = async (data: IFormInput) => {
 
@@ -68,9 +71,11 @@ const Login = ({setProfile} : {setProfile: React.Dispatch<React.SetStateAction<s
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data),
         }).then((res) => res.json());
-        alert(JSON.stringify(`${res.message}`));
-        {(`${res.message}` === 'User Logged in.' ? setProfile(JSON.stringify(data.username).replace(/\"/g, "")) : setProfile(""));} //setProfile to set profile name
+        alert(JSON.stringify(`${res.status.message}`));
+        {(`${res.status.message}` === 'User Logged in.' ? setProfile(JSON.stringify(data.username).replace(/\"/g, "")) : setProfile(""));} //setProfile to set profile name
+        {if(`${res.accessToken}`) { localStorage.setItem("user", `${res.accessToken}`); }}
         reset();
+        nav('/');
     };
 
     return(
