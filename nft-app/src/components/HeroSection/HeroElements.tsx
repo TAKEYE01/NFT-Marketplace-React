@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const HeroContainer = styled.div`
     display: flex;
@@ -38,7 +39,7 @@ export const HeroContent = styled.div`
     z-index: 3;
     max-width: 1200px;
     position: absolute;
-    padding: 8px 24px;
+    padding: 24px 24px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -79,5 +80,26 @@ export const HeroP = styled.p`
 
     @media screen and (max-width: 480px) {
         font-size: 16px;
+    }
+`;
+
+export const HeroButton = styled(Link)`
+    border-radius: 50px;
+    background: rgb(24, 188, 206);
+    white-space: nowrap;
+    padding: 10px 22px;
+    color: #010606;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+
+    &:hover {
+    transition: all 0.2s ease-in-out;
+    background: #fff;
+    outline: 3px solid rgb(24, 188, 206);
+    color: #010606;
     }
 `;

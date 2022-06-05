@@ -4,7 +4,8 @@ import {
   HeroBg,
   HeroContent,
   HeroH1,
-  HeroP
+  HeroP,
+  HeroButton
 
 } from './HeroElements';
 
@@ -17,6 +18,7 @@ const HeroSection = () => {
       <HeroContent>
         <HeroH1>Trade NFTs<br />Earn Rewards</HeroH1>
         <HeroP>The leading marketplace for trading, selling, and creating NFTs. Rewarding our fellow Web 3 communities with NFT Tokens.</HeroP>
+        <HeroButton to="/market">View Marketplace</HeroButton>
       </HeroContent>
     </HeroContainer>
   )

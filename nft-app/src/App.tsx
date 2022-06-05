@@ -1,6 +1,7 @@
 import Landing from './pages/index';
 import Signup from './pages/signup';
 import Login from './pages/login';
+import Market from './pages/market';
 import {
   BrowserRouter as Router,
   Routes,
@@ -20,6 +21,7 @@ function App() {
           <Route path="/" element={<Landing profile={profile} setProfile={setProfile}/>}/>
           <Route path="/signup" element={<Signup profile={profile} setProfile={setProfile}/>}/>
           <Route path="/login" element={<Login setProfile={setProfile} profile={profile}/>}/>
+          <Route path="/market" element={<Market profile={profile} setProfile={setProfile}/>}/>
         </Routes>
     </Router>
   );
